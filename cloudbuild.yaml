@@ -1,19 +1,15 @@
 ---
 steps:
 
-  # this uses a submodule, need to pull it down in cloudbuild
-  - name: gcr.io/cloud-builders/git
-    args: ['submodule', 'update', '--init', '--recursive']
-
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
         "-f",
-        "./infra/grafana/backup/Dockerfile",
+        "./Dockerfile",
         "-t",
         "gcr.io/$PROJECT_ID/grafana-backup:production",
-        "./infra/grafana/backup/",
+        ".",
       ]
 
   - name: "gcr.io/cloud-builders/docker"
