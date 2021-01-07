@@ -9,6 +9,7 @@ VERIFY_SSL=$VERIFY_SSL
 
 echo "running grafana backup"
 
+
 grafana-backup save
 if [ $? -eq 0 ]; then
 	echo 'SUCCESS'
