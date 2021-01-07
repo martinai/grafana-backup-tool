@@ -7,6 +7,8 @@ GRAFANA_ADMIN_ACCOUNT=$GRAFANA_ADMIN_ACCOUNT
 GRAFANA_ADMIN_PASSWORD=$GRAFANA_ADMIN_PASSWORD
 VERIFY_SSL=$VERIFY_SSL
 
+echo "running grafana backup"
+
 grafana-backup save
 if [ $? -eq 0 ]; then
 	echo 'SUCCESS'
@@ -14,3 +16,4 @@ if [ $? -eq 0 ]; then
 else
 	echo 'FAILED'
 fi
+
