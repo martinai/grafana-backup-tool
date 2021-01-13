@@ -14,6 +14,8 @@ grafana-backup save
 if [ $? -eq 0 ]; then
 	echo 'SUCCESS'
 	ls -l /opt/grafana-backup-tool/
+
+	gsutil cp /opt/grafana-backup-tool/ gs://$GRAFANA_BACKUP_BUCKET
 else
 	echo 'FAILED'
 fi
