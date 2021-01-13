@@ -15,7 +15,7 @@ if [ $? -eq 0 ]; then
 	echo 'SUCCESS'
 	ls -l /opt/grafana-backup-tool/
 
-	gsutil cp /opt/grafana-backup-tool/_OUTPUT_/*.tar gs://$GRAFANA_BACKUP_BUCKET
+	gsutil cp /opt/grafana-backup-tool/_OUTPUT_/* gs://$GRAFANA_BACKUP_BUCKET/
 else
 	echo 'FAILED'
 fi
