@@ -1,5 +1,5 @@
-# FROM google/cloud-sdk:alpine
-FROM alpine:latest
+FROM google/cloud-sdk:alpine
+# FROM alpine:latest
 
 LABEL maintainer="ysde108@gmail.com"
 
@@ -11,13 +11,13 @@ RUN apk update
 RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
     && apk --no-cache add python3 py3-pip py3-cffi py3-cryptography ca-certificates bash
 
-RUN apk add curl
-RUN curl \
-	https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-323.0.0-linux-x86_64.tar.gz \
-	-o /opt/google-cloud-sdk.tar.gz
-
-RUN tar -zxf /opt/google-cloud-sdk.tar.gz
-ENV PATH $PATH:/opt/google-cloud-sdk/bin
+# RUN apk add curl
+# RUN curl \
+# 	https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-323.0.0-linux-x86_64.tar.gz \
+# 	-o /opt/google-cloud-sdk.tar.gz
+# 
+# RUN tar -zxf /opt/google-cloud-sdk.tar.gz
+# ENV PATH $PATH:/opt/google-cloud-sdk/bin
 
 WORKDIR /opt/grafana-backup-tool
 ADD . /opt/grafana-backup-tool
