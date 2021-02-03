@@ -19,7 +19,15 @@ if [ $? -eq 0 ]; then
 	ls -l /opt/grafana-backup-tool/_OUTPUT_/
 
 	gsutil cp /opt/grafana-backup-tool/_OUTPUT_/*.tar.gz gs://$GRAFANA_BACKUP_BUCKET/
+	if [ $? -eq 0 ]; then
+		# Webhook to Slack if gsutil fails
+		curl -X POST -H 'Content-type: application/json' --data '{"text":"Grafana backup tool failed because gsutil was not able to upload to the bucket correctly."}' https://hooks.slack.com/services/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
+		exit 1;
+	fi
 else
 	echo 'FAILED'
+	# Webhook to Slack if gsutil fails
+    curl -X POST -H 'Content-type: application/json' --data '{"text":"Grafana backup tool failed because the grafana-backup save command failed."}' https://hooks.slack.com/services/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
+    exit 1;
 fi
 
