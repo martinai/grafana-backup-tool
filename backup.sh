@@ -26,7 +26,7 @@ if [ $? -eq 0 ]; then
 	fi
 else
 	echo 'FAILED'
-	# Webhook to Slack if gsutil fails
+	# Webhook to Slack if grafana-backup save fails
     curl -X POST -H 'Content-type: application/json' --data '{"text":"Grafana backup tool failed because the grafana-backup save command failed."}' https://hooks.slack.com/services/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
     exit 1;
 fi
